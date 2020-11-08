@@ -1,9 +1,29 @@
 package main
 
 import (
-	"fmt"
+	"botProject/handler"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
+var e = createMux()
+
 func main() {
-		fmt.Println("aaaa");
+
+	// 呼び出すための関数名は大文字から始めないといけないかも
+	e.GET("/", handler.SetWordTest)
+
+
+	e.Logger.Fatal(e.Start(":8080"))
+}
+
+func createMux() *echo.Echo {
+	e := echo.New()
+
+	e.Use(middleware.Recover())
+	e.Use(middleware.Logger())
+	e.Use(middleware.CSRF())
+
+	return e
 }
