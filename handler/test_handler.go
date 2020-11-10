@@ -2,8 +2,13 @@ package handler
 
 import (
 	"fmt"
+	// "encoding/json"
+	// "io/ioutil"
+	// "log"
+	// "net/http"
 
 	"github.com/labstack/echo/v4"
+	// "github.com/slack-go/slack/slackevents"
 )
 
 // 呼び出すための関数名は大文字から始めないといけない
@@ -32,3 +37,4 @@ func ShowWordTest(c echo.Context) error {
 
 	return render(c, "index.html", data)
 }
+
