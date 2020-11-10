@@ -62,10 +62,11 @@ func main() {
 					return
 				}
 
+				// この辺でメッセージの判定をする
 				command := message[1]
 				switch command {
-				case "ping":
-					if _, _, err := apiToken.PostMessage(event.Channel, slack.MsgOptionText("pong", false)); err != nil {
+				case "":
+					if _, _, err := apiToken.PostMessage(event.Channel, slack.MsgOptionText("", false)); err != nil {
 						log.Println(err)
 						w.WriteHeader(http.StatusInternalServerError)
 						return
